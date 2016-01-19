@@ -1,13 +1,16 @@
 'use strict'
-
+//global var
 var prod = ['babysweep', 'bag', 'boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'water-can', 'wine-glass' ];
-
- function Product (prodName, prodFile) {
+var allProd = [];
+//constructor function
+ function Product (prodName, prodPath) {
    this.prodName = prodName;
-   this.prodFile = prodFile;
-  //  this.clicks = clicks;
+   this.prodFile = prodPath;
+   this.clicks = 0;
+//when new products instantiated push to allProd array
+   allProd.push(this);
  };
-
+//instances of product
  var babysweep = new Product('babysweep', 'images/babysweep.png');
  var bag = new Product('bag', 'images/bag.jpg');
  var banana = new Product('banana', 'images/banana.jpg');
@@ -23,8 +26,20 @@ var prod = ['babysweep', 'bag', 'boots','chair','cthulhu', 'dragon', 'pen','scis
  var watercan = new Product('watercan', 'images/watercan');
  var wineglass = new Product('wineclass', 'images/wineglass.jpg');
 
-var random = function() {
-  return Math.ceil(Math.random()*15);
+//create random number 1-15
+var randomNum = function() {
+  return Math.ceil(Math.random()*allProd.length);
 };
-
+//variables for random # holder
+var productOne = randomNum();
+var productTwo = randomNum();
+var productThree = randomNum();
+//select 3 images - - NOT WORKING
 var img1 = document.getElementById('image1');
+img1.setAttribute('src', allProd[productOne].prodPath);
+
+var img2 = document.getElementById('image2');
+img2.setAttribute('src', allProd[productTwo].prodPath);
+
+var img3 = document.getElementById('image3');
+img3.setAttribute('src', allProd[productThree].prodPath);
