@@ -34,8 +34,7 @@ var randomNum = function() {
 var productOne = randomNum();
 var productTwo = randomNum();
 var productThree = randomNum();
-
-//functions for
+//select 3 images - - NOT WORKING
 var img1 = document.getElementById('image1');
 img1.setAttribute('src', allProd[productOne].prodPath);
 
