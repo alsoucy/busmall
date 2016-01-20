@@ -1,6 +1,6 @@
 'use strict'
 //global var
-var prod = ['babysweep', 'bag', 'boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'water-can', 'wine-glass' ];
+var prod = ['babysweep', 'bag', 'banana', 'boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'watercan', 'wineglass' ];
 var allProd = [];
 var totalClicks = 0;
 var pageItems = [];
@@ -49,15 +49,15 @@ random();
 //select 3 random images
 function random() {
   pageItems = [];
-var productOne = randomNum();
+  var productOne = randomNum();
 // console.log("productOne = " + productOne);
-img1.src = allProd[productOne].prodPath;
-allProd[productOne].timesDisplayed +=1
-pageItems.push(allProd[productOne]);
+  img1.src = allProd[productOne].prodPath;
+  allProd[productOne].timesDisplayed +=1
+  pageItems.push(allProd[productOne]);
 
-var productTwo = randomNum();
+  var productTwo = randomNum();
 // console.log("productTwo = " + productTwo);
-  while (productOne === productTwo || productOne === productThree ){
+  while (productOne === productTwo){
     var productTwo = randomNum();
   };
   img2.src = allProd[productTwo].prodPath;
@@ -71,7 +71,7 @@ var productTwo = randomNum();
     };
   img3.src = allProd[productThree].prodPath;
   allProd[productThree].timesDisplayed +=1
-    pageItems.push(allProd[productThree]);
+  pageItems.push(allProd[productThree]);
 }
 // random();
 
@@ -82,7 +82,7 @@ function handleChangeImage() {
   if(event.target.id === "image1"){
       // console.log("prod one is: " + pageItems[0]);
     pageItems[0].clicks +=1;
-      // console.log("productOne clicks = " + pageItems[0].clicks);
+      // console.log("productOne clicks = " + pageItems[0].clicks + " out of " + pageItems[0].timesDisplayed + " views" );
       // console.log("productOne name = " + pageItems[0].prodName);
   } else if (event.target.id === "image2") {
     pageItems[1].clicks +=1;
@@ -97,12 +97,40 @@ function handleChangeImage() {
   };
 };
 
-function handleResultButton() {
+var allClicks = [];
+var alltimesDisplayed = [];
+function handleResultButtonChart() {
+  for (var i = 0; i < allProd.length; i++) {
+    allClicks[i] = allProd[i].clicks;
+    alltimesDisplayed[i] = allProd[i].timesDisplayed;
+  }
 
+  var data = {
+      labels: ['babysweep', 'bag', 'banana','boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'water-can', 'wine-glass'],
+      datasets: [
+          {
+              label: "Clicks per Item",
+              fillColor: "rgba(1,22,165,0.5)",
+              strokeColor: "rgba(1,22,165,0.8)",
+              // highlightFill: "rgba(220,220,220,0.75)",
+              // highlightStroke: "rgba(220,220,220,1)",
+              data: allClicks
+          },
+          {
+              label: "Displays per Item",
+              fillColor: "rgba(74,168,222,0.5)",
+              strokeColor: "rgba(74,168,222,0.8)",
+              // highlightFill: "rgba(151,187,205,0.75)",
+              // highlightStroke: "rgba(151,187,205,1)",
+              data: alltimesDisplayed
+          }
+      ]
+  };
+  var context = document.getElementById('barchart').getContext('2d');
+  var myBarChart = new Chart(context).Bar(data);
 };
 
-
-resultButton.addEventListener('submit', handleResultButton);
+resultButton.addEventListener('click', handleResultButtonChart);
 image1.addEventListener('click', handleChangeImage);
 image2.addEventListener('click', handleChangeImage);
 image3.addEventListener('click', handleChangeImage);
