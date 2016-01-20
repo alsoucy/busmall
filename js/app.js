@@ -48,45 +48,61 @@ random();
 
 //select 3 random images
 function random() {
+  pageItems = [];
 var productOne = randomNum();
 // console.log("productOne = " + productOne);
 img1.src = allProd[productOne].prodPath;
-pageItems.push.allProd[productOne];
 allProd[productOne].timesDisplayed +=1
+pageItems.push(allProd[productOne]);
 
 var productTwo = randomNum();
 // console.log("productTwo = " + productTwo);
-  // while (productOne === productTwo || productOne === productThree ){
-  //   var productTwo = randomNum();
-  // };
+  while (productOne === productTwo || productOne === productThree ){
+    var productTwo = randomNum();
+  };
   img2.src = allProd[productTwo].prodPath;
-  pageItems.push.allProd[productTwo];
   allProd[productTwo].timesDisplayed +=1
+  pageItems.push(allProd[productTwo]);
 
   var productThree = randomNum();
   // console.log("productThree = " + productThree);
-    // while (productOne === productThree || productTwo === productThree){
-    //   productThree = randomNum();
-    // };
+    while (productOne === productThree || productTwo === productThree){
+      productThree = randomNum();
+    };
   img3.src = allProd[productThree].prodPath;
-  pageItems.push.allProd[productThree];
   allProd[productThree].timesDisplayed +=1
+    pageItems.push(allProd[productThree]);
 }
 // random();
 
 //eventhandler
+var button = document.getElementById('resultButton')
 function handleChangeImage() {
   totalClicks +=1;
-  console.log("prod one outside 'if' is: " + allProd[productOne]);
   if(event.target.id === "image1"){
-    console.log("prod one is: " + allProd[productOne]);
-    allProd[productOne].clicks +=1;
-    console.log("productOne clicks = " + allProd[productOne].clicks);
+      // console.log("prod one is: " + pageItems[0]);
+    pageItems[0].clicks +=1;
+      // console.log("productOne clicks = " + pageItems[0].clicks);
+      // console.log("productOne name = " + pageItems[0].prodName);
+  } else if (event.target.id === "image2") {
+    pageItems[1].clicks +=1;
+  } else {
+    pageItems[2].clicks +=1;
   }
-  console.log("totalClicks = " + totalClicks);
+      console.log("totalClicks = " + totalClicks);
   random();
-}
 
+  if (totalClicks === 3) {
+    resultButton.removeAttribute('hidden');
+  };
+};
+
+function handleResultButton() {
+
+};
+
+
+resultButton.addEventListener('submit', handleResultButton);
 image1.addEventListener('click', handleChangeImage);
 image2.addEventListener('click', handleChangeImage);
 image3.addEventListener('click', handleChangeImage);
