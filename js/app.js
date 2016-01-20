@@ -1,12 +1,20 @@
 'use strict'
 //global var
-// var prod = ['babysweep', 'bag', 'boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'water-can', 'wine-glass' ];
+var prod = ['babysweep', 'bag', 'boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'water-can', 'wine-glass' ];
 var allProd = [];
+var totalClicks = 0;
+var pageItems = [];
+
 //constructor function
  function Product (prodName, prodPath) {
    this.prodName = prodName;
    this.prodPath = prodPath;
    this.clicks = 0;
+   this.timesDisplayed = 0;
+   this.percentClicked = 0;
+ //   this.findPercentClicked = function() {
+ //   this.percentClicked = (this.timesClicked / this.timesDisplayed).toFixed(2) * 100;
+ // }
 //when new products instantiated push to allProd array
    allProd.push(this);
  };
@@ -28,36 +36,54 @@ var allProd = [];
 
 //create random number 1-15
 var randomNum = function() {
-  return Math.ceil(Math.random()*allProd.length);
-};
-//variables for random # holder
+  return Math.floor(Math.random()*allProd.length);
+}
+var productOne = 0;
+var productTwo = 0;
+var productThree = 0;
 var img1 = document.getElementById('image1');
 var img2 = document.getElementById('image2');
 var img3 = document.getElementById('image3');
-
-//select 3 random images - - NOT WORKING
-function random() {
-var productOne = randomNum();
-img1.src = allProd[productOne].prodPath;
-
-var productTwo = randomNum();
-  while (productOne === productTwo || productOne === productThree ){
-    var productTwo = randomNum();
-  };
-  img2.src = allProd[productTwo].prodPath;
-
-  var productThree = randomNum();
-    while (productOne === productThree || productTwo === productThree){
-      productThree = randomNum();
-    };
-  img3.src = allProd[productThree].prodPath;
-}
-
-
 random();
 
+//select 3 random images
+function random() {
+var productOne = randomNum();
+// console.log("productOne = " + productOne);
+img1.src = allProd[productOne].prodPath;
+pageItems.push.allProd[productOne];
+allProd[productOne].timesDisplayed +=1
 
+var productTwo = randomNum();
+// console.log("productTwo = " + productTwo);
+  // while (productOne === productTwo || productOne === productThree ){
+  //   var productTwo = randomNum();
+  // };
+  img2.src = allProd[productTwo].prodPath;
+  pageItems.push.allProd[productTwo];
+  allProd[productTwo].timesDisplayed +=1
+
+  var productThree = randomNum();
+  // console.log("productThree = " + productThree);
+    // while (productOne === productThree || productTwo === productThree){
+    //   productThree = randomNum();
+    // };
+  img3.src = allProd[productThree].prodPath;
+  pageItems.push.allProd[productThree];
+  allProd[productThree].timesDisplayed +=1
+}
+// random();
+
+//eventhandler
 function handleChangeImage() {
+  totalClicks +=1;
+  console.log("prod one outside 'if' is: " + allProd[productOne]);
+  if(event.target.id === "image1"){
+    console.log("prod one is: " + allProd[productOne]);
+    allProd[productOne].clicks +=1;
+    console.log("productOne clicks = " + allProd[productOne].clicks);
+  }
+  console.log("totalClicks = " + totalClicks);
   random();
 }
 
