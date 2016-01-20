@@ -1,7 +1,19 @@
 /*this is my css file*/
+
+.directions {
+  text-align: center;
+}
 .container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+}
+.container img {
+    border: 1px solid black;
+    margin-left: 15px;
+}
+
+Button {
+  background-color: #49CAF5;
+  text-align: center;
 }
