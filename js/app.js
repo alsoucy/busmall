@@ -93,7 +93,7 @@ function handleChangeImage() {
       console.log("totalClicks = " + totalClicks);
   random();                   //run random again to bring up 3 new random products
 
-  if (totalClicks === 15) {
+  if (totalClicks === 3) {
     resultButton.removeAttribute('hidden');
   }
 }
@@ -105,6 +105,9 @@ function handleResultButtonChart() {
   for (var i = 0; i < allProd.length; i++) {
     allClicks[i] = allProd[i].clicks;
     alltimesDisplayed[i] = allProd[i].timesDisplayed;
+    localStorage.setItem('barpersistClick', JSON.stringify(allClicks));
+    localStorage.setItem('barpersisrDisplay', JSON.stringify(alltimesDisplayed));
+
   }
   var data = {
       labels: ['babysweep', 'bag', 'banana','boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'water-can', 'wine-glass'],
@@ -131,3 +134,11 @@ resultButton.addEventListener('click', handleResultButtonChart);
 image1.addEventListener('click', handleChangeImage);
 image2.addEventListener('click', handleChangeImage);
 image3.addEventListener('click', handleChangeImage);
+//clear LS button
+var clearLS = document.getElementById('clearLSbutton');
+var handleLSClear = function() {
+  console.log('cleariing Local Storage');
+  localStorage.clear();
+};
+clearLS.addEventListener('click', handleLSClear);
+//add chart data to local storage

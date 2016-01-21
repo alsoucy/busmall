@@ -10,3 +10,4 @@ js/chart.js
 .eslintignore
 **.md
 userstories.md
+app.js
