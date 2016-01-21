@@ -74,7 +74,6 @@ function random() {
   allProd[productThree].timesDisplayed += 1;
   pageItems.push(allProd[productThree]);
 }
-    // random();
 
 //eventhandler
 var button = document.getElementById('resultButton');
@@ -91,10 +90,10 @@ function handleChangeImage() {
   } else {
     pageItems[2].clicks += 1;
   }
-  console.log('totalClicks = ' + totalClicks);
-  random();
+      console.log("totalClicks = " + totalClicks);
+  random();                   //run random again to bring up 3 new random products
 
-  if (totalClicks === 3) {
+  if (totalClicks === 15) {
     resultButton.removeAttribute('hidden');
   }
 }
@@ -107,24 +106,22 @@ function handleResultButtonChart() {
     allClicks[i] = allProd[i].clicks;
     alltimesDisplayed[i] = allProd[i].timesDisplayed;
   }
-
   var data = {
-    labels: ['babysweep', 'bag', 'banana', 'boots', 'chair', 'cthulhu', 'dragon', 'pen', 'scissors', 'shark', 'unicorn', 'usb', 'water-can', 'wine-glass'],
-    datasets: [{
-      label: 'Clicks per Item',
-      fillColor: 'rgba(1,22,165,0.5)',
-      strokeColor: 'rgba(1,22,165,0.8)',
-            // highlightFill: "rgba(220,220,220,0.75)",
-            // highlightStroke: "rgba(220,220,220,1)",
-      data: allClicks
-    }, {
-      label: 'Displays per Item',
-      fillColor: 'rgba(74,168,222,0.5)',
-      strokeColor: 'rgba(74,168,222,0.8)',
-            // highlightFill: "rgba(151,187,205,0.75)",
-            // highlightStroke: "rgba(151,187,205,1)",
-      data: alltimesDisplayed
-    }]
+      labels: ['babysweep', 'bag', 'banana','boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'water-can', 'wine-glass'],
+      datasets: [
+          {
+              label: "Clicks per Item",
+              fillColor: "rgba(1,22,165,0.5)",
+              strokeColor: "rgba(1,22,165,0.8)",
+              data: allClicks
+          },
+          {
+              label: "Displays per Item",
+              fillColor: "rgba(74,168,222,0.5)",
+              strokeColor: "rgba(74,168,222,0.8)",
+              data: alltimesDisplayed
+          }
+      ]
   };
   var context = document.getElementById('barchart').getContext('2d');
   var myBarChart = new Chart(context).Bar(data);
