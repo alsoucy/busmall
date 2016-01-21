@@ -73,7 +73,6 @@ function random() {
   allProd[productThree].timesDisplayed +=1
   pageItems.push(allProd[productThree]);
 }
-// random();
 
 //eventhandler
 var button = document.getElementById('resultButton')
@@ -90,9 +89,9 @@ function handleChangeImage() {
     pageItems[2].clicks +=1;
   }
       console.log("totalClicks = " + totalClicks);
-  random();
+  random();                   //run random again to bring up 3 new random products
 
-  if (totalClicks === 3) {
+  if (totalClicks === 15) {
     resultButton.removeAttribute('hidden');
   };
 };
@@ -104,7 +103,6 @@ function handleResultButtonChart() {
     allClicks[i] = allProd[i].clicks;
     alltimesDisplayed[i] = allProd[i].timesDisplayed;
   }
-
   var data = {
       labels: ['babysweep', 'bag', 'banana','boots','chair','cthulhu', 'dragon', 'pen','scissors', 'shark','unicorn', 'usb', 'water-can', 'wine-glass'],
       datasets: [
