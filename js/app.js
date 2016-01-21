@@ -105,8 +105,8 @@ function handleResultButtonChart() {
   for (var i = 0; i < allProd.length; i++) {
     allClicks[i] = allProd[i].clicks;
     alltimesDisplayed[i] = allProd[i].timesDisplayed;
-    localStorage.setItem('barpersistClick', JSON.stringify(allClicks));
-    localStorage.setItem('barpersisrDisplay', JSON.stringify(alltimesDisplayed));
+    localStorage.setItem('barPersistClick', JSON.stringify(allClicks));
+    localStorage.setItem('barPersistDisplay', JSON.stringify(alltimesDisplayed));
 
   }
   var data = {
@@ -128,6 +128,22 @@ function handleResultButtonChart() {
   };
   var context = document.getElementById('barchart').getContext('2d');
   var myBarChart = new Chart(context).Bar(data);
+  /////////
+  var chartData1 = localStorage.getItem('barPersistClick');
+  if (chartData1) {
+    allClicks = JSON.parse(chartData1);
+  } else {
+    console.log('Local storage empty!! Initializing!');
+    localStorage.setItem('barPersistClick', JSON.stringify(allClicks));
+  }
+  /////////
+  var chartData2 = localStorage.getItem('barPersistDisplay');
+  if (chartData2) {
+    alltimesDisplayed = JSON.parse(chartData2);
+  } else {
+    console.log('Local storage empty!! Initializing!');
+    localStorage.setItem('barPersistDisplay', JSON.stringify(alltimesDisplayed));
+  }
 }
 
 resultButton.addEventListener('click', handleResultButtonChart);
@@ -136,9 +152,10 @@ image2.addEventListener('click', handleChangeImage);
 image3.addEventListener('click', handleChangeImage);
 //clear LS button
 var clearLS = document.getElementById('clearLSbutton');
-var handleLSClear = function() {
+
+clearLS.addEventListener('click', handleLSClear);
+function handleLSClear() {
   console.log('cleariing Local Storage');
   localStorage.clear();
 };
-clearLS.addEventListener('click', handleLSClear);
 //add chart data to local storage
