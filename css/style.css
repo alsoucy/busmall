@@ -14,6 +14,10 @@
 }
 
 Button {
-  background-color: #49CAF5;
+  background-color: #4AA8DE;
   text-align: center;
+}
+
+canvas {
+  margin-left: 250px;
 }
