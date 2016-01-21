@@ -12,3 +12,7 @@ added per item clicks<br>
 added hidden button that shows after 3 clicks (3 clicks for development)<br>
 
 <h4>WED 1.20</h4>
+added button event handler to create a bar graph to display results when button clicked after a specified number of clicks<br>
+linted the app.js file<br>
+adjusted image sizes<br>
+added CSS styling to page<br>

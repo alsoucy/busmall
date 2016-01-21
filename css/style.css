@@ -1,9 +1,13 @@
 /*this is my css file*/
+* {
+  font-family: Roboto; sans serif;
+}
 
 .directions {
   text-align: center;
 }
 .container {
+  background-color: #A8D6D7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,11 +17,14 @@
     margin-left: 15px;
 }
 
-Button {
+button {
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
   background-color: #4AA8DE;
   text-align: center;
 }
 
 canvas {
-  margin-left: 250px;
+  margin-left: 300px;
 }
