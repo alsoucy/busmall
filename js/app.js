@@ -70,7 +70,6 @@ function random() {
   allProd[productThree].timesDisplayed += 1;
   pageItems.push(allProd[productThree]);
 }
-
 //eventhandler
 var button = document.getElementById('resultButton');
 
@@ -86,7 +85,7 @@ function handleChangeImage() {
       console.log("totalClicks = " + totalClicks);
   random();                   //run random again to bring up 3 new random products
 
-  if (totalClicks === 3) {
+  if (totalClicks === 15) {
     resultButton.removeAttribute('hidden');
   }
 }
@@ -121,7 +120,7 @@ function handleResultButtonChart() {
   };
   var context = document.getElementById('barchart').getContext('2d');
   var myBarChart = new Chart(context).Bar(data);
-
+//LS storage
   var chartData1 = localStorage.getItem('barPersistClick');
   if (chartData1) {
     allClicks = JSON.parse(chartData1);
@@ -145,7 +144,6 @@ image2.addEventListener('click', handleChangeImage);
 image3.addEventListener('click', handleChangeImage);
 //clear LS button
 var clearLS = document.getElementById('clearLSbutton');
-
 clearLS.addEventListener('click', handleLSClear);
 function handleLSClear() {
   console.log('cleariing Local Storage');
