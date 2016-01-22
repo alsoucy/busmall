@@ -16,3 +16,9 @@ added button event handler to create a bar graph to display results when button 
 linted the app.js file<br>
 adjusted image sizes<br>
 added CSS styling to page<br>
+
+<h4>THURS 1.21</h4>
+Added local storage<br>
+
+<h4>FRI 1.22<h4>
+deploy 
