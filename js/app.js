@@ -13,10 +13,6 @@ function Product(prodName, prodPath) {
   this.clicks = 0;
   this.timesDisplayed = 0;
   this.percentClicked = 0;
-    //   this.findPercentClicked = function() {
-    //   this.percentClicked = (this.timesClicked / this.timesDisplayed).toFixed(2) * 100;
-    // }
-    //when new products instantiated push to allProd array
   allProd.push(this);
 }
 //instances of product
@@ -81,10 +77,7 @@ var button = document.getElementById('resultButton');
 function handleChangeImage() {
   totalClicks += 1;
   if (event.target.id === 'image1') {
-        // console.log("prod one is: " + pageItems[0]);
     pageItems[0].clicks += 1;
-        // console.log("productOne clicks = " + pageItems[0].clicks + " out of " + pageItems[0].timesDisplayed + " views" );
-        // console.log("productOne name = " + pageItems[0].prodName);
   } else if (event.target.id === 'image2') {
     pageItems[1].clicks += 1;
   } else {
@@ -128,7 +121,7 @@ function handleResultButtonChart() {
   };
   var context = document.getElementById('barchart').getContext('2d');
   var myBarChart = new Chart(context).Bar(data);
-  /////////
+
   var chartData1 = localStorage.getItem('barPersistClick');
   if (chartData1) {
     allClicks = JSON.parse(chartData1);
@@ -136,7 +129,7 @@ function handleResultButtonChart() {
     console.log('Local storage empty!! Initializing!');
     localStorage.setItem('barPersistClick', JSON.stringify(allClicks));
   }
-  /////////
+
   var chartData2 = localStorage.getItem('barPersistDisplay');
   if (chartData2) {
     alltimesDisplayed = JSON.parse(chartData2);
@@ -158,4 +151,3 @@ function handleLSClear() {
   console.log('cleariing Local Storage');
   localStorage.clear();
 };
-//add chart data to local storage
