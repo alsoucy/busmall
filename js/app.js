@@ -85,7 +85,7 @@ function handleChangeImage() {
       console.log("totalClicks = " + totalClicks);
   random();                   //run random again to bring up 3 new random products
 
-  if (totalClicks === 3) {
+  if (totalClicks === 15) {
     resultButton.removeAttribute('hidden');
   }
 }
