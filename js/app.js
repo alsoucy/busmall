@@ -47,13 +47,11 @@ random();
 function random() {
   pageItems = [];
   var productOne = randomNum();
-        // console.log("productOne = " + productOne);
   img1.src = allProd[productOne].prodPath;
   allProd[productOne].timesDisplayed += 1;
   pageItems.push(allProd[productOne]);
 
   var productTwo = randomNum();
-        // console.log("productTwo = " + productTwo);
   while (productOne === productTwo) {
     var productTwo = randomNum();
   }
@@ -62,7 +60,6 @@ function random() {
   pageItems.push(allProd[productTwo]);
 
   var productThree = randomNum();
-        // console.log("productThree = " + productThree);
   while (productOne === productThree || productTwo === productThree) {
     productThree = randomNum();
   }
@@ -112,8 +109,8 @@ function handleResultButtonChart() {
           },
           {
               label: "Displays per Item",
-              fillColor: "rgba(74,168,222,0.5)",
-              strokeColor: "rgba(74,168,222,0.8)",
+              fillColor: "rgba(168,214,215,0.5)",
+              strokeColor: "rgba(168,214,215,0.8)",
               data: alltimesDisplayed
           }
       ]

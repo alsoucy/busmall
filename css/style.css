@@ -1,10 +1,20 @@
 /*this is my css file*/
-* {
-  font-family: Roboto; sans serif;
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: rgb(1,22,165);
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: -10px;
+}
+
+hr {
+  border: 1px solid black;
 }
 
 .directions {
   text-align: center;
+  font-family: 'Roboto'; sans serif;
 }
 .container {
   background-color: #A8D6D7;
@@ -13,7 +23,7 @@
   align-items: center;
 }
 .container img {
-    border: 1px solid black;
+    border: 2px solid black;
     margin-left: 15px;
 }
 
@@ -21,10 +31,10 @@ button {
   width: 150px;
   height: 40px;
   font-size: 18px;
-  background-color: #4AA8DE;
+  background-color: #A8D6D7;
   text-align: center;
 }
 
 canvas {
-  margin-left: 200px;
+  margin-left: 180px;
 }
